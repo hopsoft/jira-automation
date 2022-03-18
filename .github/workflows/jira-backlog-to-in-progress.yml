@@ -1,6 +1,6 @@
 on: push
 
-name: Jira: Backlog to In Progress
+name: Jira ANY > In Progress
 
 jobs:
   build:

@@ -1,6 +1,6 @@
 on: push
 
-name: Jira ANY > In Progress
+name: Jira Tansition to In Progress
 
 jobs:
   build:

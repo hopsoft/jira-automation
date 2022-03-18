@@ -1,0 +1,33 @@
+on:
+  pull_request:
+    types:
+    - closed
+
+name: Jira Transition to In Review
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Find and Transition Issue
+
+    steps:
+    - name: Login
+      uses: atlassian/gajira-login@master
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+    - name: Find Issue
+      id: find
+      uses: atlassian/gajira-find-issue-key@master
+      with:
+        string: ${{ github.event.pull_request.title }}
+
+    - name: Transition Issue
+      id: transition
+      uses: atlassian/gajira-transition@master
+      if: ${{ github.event.pull_request.merged == true && steps.find.outputs.issue }}
+      with:
+        issue: ${{ steps.find.outputs.issue }}
+        transition: "Done"

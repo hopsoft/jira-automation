@@ -4,4 +4,4 @@
 
 - [x] Tansition to In Progress
 - [x] Transition to In Review
-- [ ] Transition to Done
+- [x] Transition to Done

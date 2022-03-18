@@ -5,7 +5,8 @@ name: Jira ANY > In Progress
 jobs:
   build:
     runs-on: ubuntu-latest
-    name:
+    name: Find and Transition Issue
+
     steps:
     - name: Login
       uses: atlassian/gajira-login@master
@@ -23,6 +24,7 @@ jobs:
     - name: Transition Issue
       id: transition
       uses: atlassian/gajira-transition@master
+      if: ${{ steps.find.outputs.issue }}
       with:
         issue: ${{ steps.find.outputs.issue }}
         transition: "In Progress"

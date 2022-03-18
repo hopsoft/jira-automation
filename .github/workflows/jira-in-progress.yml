@@ -5,7 +5,7 @@ name: Jira Tansition to In Progress
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Find and Transition Issue
+    name: Find and Transition Issue to In Progress
 
     steps:
     - name: Login

@@ -9,7 +9,7 @@ name: Jira Transition to In Review
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Find and Transition Issue
+    name: Transition Jiri Issue to In Review
 
     steps:
     - name: Login
@@ -23,7 +23,7 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        from: branch
+        string: ${{ github.event.pull_request.title }}
 
     - name: Transition Issue
       id: transition

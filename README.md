@@ -2,7 +2,6 @@
 
 ## GitHub Actions
 
-- [x] ANY > In Progress
-- [ ] ANY > In Review
-
-yo
+- [x] Tansition to In Progress
+- [x] Transition to In Review
+- [ ] Transition to Done

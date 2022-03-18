@@ -1,11 +1,14 @@
-on: push
+on:
+  pull_request:
+    types:
+    - closed
 
-name: Jira Tansition to In Progress
+name: Jira Transition to In Review
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Transition Jira Issue to In Progress
+    name: Transition Jira Issue to Done
 
     steps:
     - name: Login
@@ -19,12 +22,12 @@ jobs:
       id: find
       uses: atlassian/gajira-find-issue-key@master
       with:
-        from: commits
+        string: ${{ github.event.pull_request.title }}
 
     - name: Transition Issue
       id: transition
       uses: atlassian/gajira-transition@master
-      if: ${{ steps.find.outputs.issue }}
+      if: ${{ github.event.pull_request.merged == true && steps.find.outputs.issue }}
       with:
         issue: ${{ steps.find.outputs.issue }}
-        transition: "In Progress"
+        transition: "Done"

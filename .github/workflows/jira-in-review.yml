@@ -9,7 +9,7 @@ name: Jira Transition to In Review
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Find and Transition Issue to In Review
+    name: Transition Jiri Issue to In Review
 
     steps:
     - name: Login

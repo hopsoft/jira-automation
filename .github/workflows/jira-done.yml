@@ -1,9 +1,9 @@
+name: Jira Transition to In Review
+
 on:
   pull_request:
     types:
     - closed
-
-name: Jira Transition to In Review
 
 jobs:
   build:
